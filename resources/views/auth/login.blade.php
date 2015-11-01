@@ -219,36 +219,6 @@
     </div>
 @endif
 <form class="form-horizontal" role="form" method="POST" action="/" style="margin: 60px auto 30px;">
-<input type="hidden" style="position: fixed; display: none;" name="_token" value="{{ csrf_token() }}">
-<!--
-
-<div class="form-group">
-<label class="col-md-4 control-label">Username</label>
-<div class="col-md-6">
-<input type="text" class="form-control" name="username" value="{{ old('username') }}">
-</div>
-</div>
-
-<div class="form-group">
-<label class="col-md-4 control-label">Password</label>
-<div class="col-md-6">
-<input type="password" class="form-control" name="password">
-</div>
-</div>
-
-<div class="form-group">
-<div class="col-md-6 col-md-offset-4">
-</div>
-</div>
-
-<div class="form-group">
-	<div class="col-md-6 col-md-offset-4">
-	<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
-		Login
-	</button>
-
-</div>
-</div> -->
 <p class="clearfix">
     <label for="username">Username</label>
     <input type="text" name="username" id="username" placeholder="Username">
@@ -260,6 +230,7 @@
 <p class="clearfix" style="width:100%;">
     <input type="submit" name="submit" value="Sign in">
 </p>
+<input type="hidden" style="position: absolute; left: 15%;" name="_token" value="{{ csrf_token() }}">
 </form>
 </div>
 </div>

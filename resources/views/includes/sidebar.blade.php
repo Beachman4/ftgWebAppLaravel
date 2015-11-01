@@ -51,8 +51,8 @@
             <ul id="links">
                 <li class="active"><a href="#"><p>Home</p></a></li>
                 <li><a href="#"><p>Search</p></a></li>
-                <li><a href="#"><p>Settings</p></a></li>
-                <li><a href="#"><p>Logout</p></a></li>
+                <li><a href="/settings"><p>Settings</p></a></li>
+                <li><a href="/logout"><p>Logout</p></a></li>
             </ul>
         </div>
     </div>
