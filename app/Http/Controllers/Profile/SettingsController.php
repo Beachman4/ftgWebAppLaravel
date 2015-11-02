@@ -42,9 +42,13 @@ class SettingsController extends Controller
     /**
      * Updates Info in Database if different than current value
      * 
-     * @return NULL for now
+     * @return to settings
      */
-    public function updateinfo() {
-        
+    public function updateinfo(Request $request) {
+        $id = Auth::User()->id;
+        $username = $request->input('username');
+        $email = $request->input('email');
+        DB::table('users')->where('id', $id)->update(['username'    =>  $username,'email'   =>  $email, 'rank'  =>  $rank]);
+        return redirect('/settings', ['rank'    =>  Auth::User()->rank]);
     }
 }

@@ -33,6 +33,11 @@
             .input h4 {
                 text-align: center;
             }
+            #back {
+                position: fixed;
+                left: 21%;
+                top: 12%;
+            }
         </style>
     </head>
     <body>
@@ -95,6 +100,7 @@
                 <button type="submit" class="btn btn-default" id="edit">Edit Player</button>
                 <input type="hidden" style="position: absolute; left: 15%;" name="_token" value="{{ csrf_token() }}">
             </form>
+            <a href="/players/{{ $user->id }}"><button id="back" class="btn btn-default" type="button"><-Back</button></a>
             @if (count($errors) > 0)
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>

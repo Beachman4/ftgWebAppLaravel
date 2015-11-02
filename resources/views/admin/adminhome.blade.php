@@ -30,16 +30,18 @@
                 background-color: #1A1C21;
                 border-bottom: 1px solid black;
             }
-            .user {
-                padding-top: 2%;
-                background-color: #1A1C21;
-                border-bottom: 1px solid black;
-            }
-            .user p {
+            .email .rank {
                 display: inline-block;
                 position: relative;
                 top: 50%;
                 transform: translateY(-50%);
+            }
+            .username {
+                display: inline-block;
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+                right: 8.8%;
             }
             .rank {
                 float: right;
@@ -61,10 +63,6 @@
                 transform: translateY(-50%);
                 float: left;
                 left: 3%;
-            }
-            .username {
-                position: relative;
-                right: 8.8%;
             }
             .legend h4 {
                 position: fixed;
@@ -113,6 +111,7 @@
             <div class="users">
                 @foreach ($users as $user)
                     <div class="user">
+                        <!--<a href="/players/{{ $user->id }}"><button class="btn btn-info" id="player_button" type="button">Select</button></a> -->
                         <a href="/admin/users/{{ $user->id }}"><p class="username"><u>{{ $user->username }}</u></p></a>
                         <p class="email">{{ $user->email }} </p>
                         <p class="rank">{{ $user->rank }} </p>

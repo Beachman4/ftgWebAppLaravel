@@ -24,14 +24,18 @@ Route::get('/logout', array('uses'  => 'Auth\AuthController@getLogout'));
 Route::group(['middleware'  =>  'App\Http\Middleware\AdminMiddleware'], function() {
     Route::get('/admin', array('uses'  =>  'Admin\AdminController@home'));
     Route::post('/admin', array('uses'  =>  'Admin\AdminController@search'));
-    Route::get('/admin/user/{id}', array('uses' =>  'Admin\AdminController@getuser'));
-    Route::get('admin/create', array('uses'  => 'Admin\AdminController@getRegister'));
-    Route::post('admin/create', array('uses'  => 'Admin\AdminController@postRegister'));
+    Route::get('/admin/users/{id}', array('uses' =>  'Admin\AdminController@getuser'));
+    Route::get('/admin/users/{id}/edit', array('uses'    =>  'Admin\AdminController@getedituser'));
+    Route::post('/admin/users/{id}/edit', array('uses'   =>  'Admin\AdminController@postedituser'));
+    Route::get('admin/create', array('uses'  => 'Admin\AdminController@getCreate'));
+    Route::post('admin/create', array('uses'  => 'Admin\AdminController@postCreate'));
 });
 Route::group(['middleware'  =>  'auth'], function() {
     Route::get('/home', array('uses'    =>  'Profile\BaseController@Home'));
+    /*
     Route::get('/settings', array('uses'    =>  'Profile\SettingsController@getdbinfo'));
     Route::post('/settings', array('uses'   =>  'Profile\SettingsController@updateinfo'));
+    */
     Route::get('/players', array('uses'  =>  'PlayersController@getPlayers'));
     Route::get('/players/{id}', array('uses'    =>  'PlayersController@showplayer'));
     Route::post('/players', array('uses'    =>  'PlayersController@postSearch'));

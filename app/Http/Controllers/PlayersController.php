@@ -10,46 +10,47 @@ use App\Http\Controllers\Controller;
 
 class PlayersController extends Controller
 {
+    /*
+    Get list of Players from database and pass to view
+    
+    */
     public function getPlayers()
     {
-        /*$users = DB::table('playerdata')->select('core_uid', 'core_name', 'core_bank')->get(); */
         $users = DB::table('playerdata')->select('id', 'core_uid', 'core_name', 'core_bank')->simplePaginate(10);        
         return view('players', ['users' =>  $users]);
     }
+    /* Retrieve data from Search and search in database
+    Return Search results to view
+    */
     public function postSearch(Request $request)
     {   
         $search = $request->input('search');
         $users = DB::table('playerdata')->select('id', 'core_uid', 'core_name', 'core_bank')->where('core_name', 'LIKE', '%'.$search.'%')->simplePaginate(10);
         return view('playersearch', ['users' =>  $users, 'search'    =>  true]);
     }
+    /*
+    Get Player Info and pass to view
+    
+    */
     public function showplayer($id)
     {
         $user = DB::table('playerdata')->where('id', $id)->first();
         return view('player', ['user'   =>  $user]);
     }
+    /* Get Player data and pass to view
+    
+    */
     public function editplayer($id)
     {
         $user = DB::table('playerdata')->where('id', $id)->first();
         return view('editplayer', ['user'   =>  $user]);
     }
+    /*
+    Retrieve data from input fields and pass to database
+    
+    */
     public function posteditplayer(Request $request, $id)
     {
-        /*
-        $this->validate($request, [
-            'name'  =>  'max:255',
-            'uid'   =>  'unique:playerdata,core_uid|max:255',
-            'money' =>  'max:255',
-            'savepoint' =>  'max:255',
-            'farming'   =>  'max:255|integer',
-            'fishing'   =>  'max:255|integer',
-            'mining'    =>  'max:255|integer',
-            'civinv'    =>  'max:255',
-            'civgear'   =>  'max:255',
-            'copinv'    =>  'max:255',
-            'copgear'   =>  'max:255',
-            'medicinv'  =>  'max:255',
-            'medicgear' =>  'max:255',
-        ]); */
         $name = $request->input('name');
         $uid = $request->input('uid');
         $money = $request->input('money');

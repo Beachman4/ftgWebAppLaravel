@@ -53,7 +53,7 @@
                 @if (Auth::User()->rank == 5)
                     <li><a href="/admin"><p>Admin</p></a></li>
                 @endif  
-                <li><a href="/settings"><p>Settings</p></a></li>
+                <!--<li><a href="/settings"><p>Settings</p></a></li> -->
                 <li><a href="/logout"><p>Logout</p></a></li>
             </ul>
         </div>
