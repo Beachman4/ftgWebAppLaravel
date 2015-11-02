@@ -1,10 +1,6 @@
 <html>
     <head>
-        <title>FTG</title>
-        <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/bootstrap.css') }}" />
-        <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/bootstrap-theme.css') }}" />
-        <script type="text/javascript" src="{{ URL::asset('assets/js/jquery-2.1.4.min.js') }}"></script>
-        <script type="text/javascript" src="{{ URL::asset('assets/bootstrap/bootstrap.min.js') }}"></script>
+        @include('includes.head')
         <style>
         html, body {
                background-color: #252830;
@@ -44,6 +40,22 @@
             }
             .medicgear {
                 float: right;
+            }
+            .player div {
+                padding-bottom: 2%;
+                position: relative;
+                top: 15%;
+                left: 15%;
+            }
+            #back {
+                position: fixed;
+                left: 21%;
+                top: 12%;
+            }
+            #edit {
+                position: fixed;
+                right: 6%;
+                top: 85%;
             }
         </style>
     </head>
@@ -103,5 +115,9 @@
             <p>{{ $user->core_medic_gear }}</p>
             </div>
         </div>
+        <a href="/players"><button id="back" class="btn btn-default" type="button"><-Back</button></a>
+        @if (Auth::User()->rank >= 3)
+        <a href="/players/{{ $user->id }}/edit"><button class="btn btn-default" id="edit" type="button">Edit Player</button></a>
+        @endif
     </body>
 </html>

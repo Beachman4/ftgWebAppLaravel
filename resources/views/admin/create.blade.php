@@ -1,15 +1,14 @@
-@extends('layouts.master')
+@include('includes.head')
 <style>
 
     .form-horizontal {
     font-family: 'Ubuntu', 'Lato', sans-serif;
     font-weight: 400;
     /* Size and position */
-    width: 300px;
-    position: relative;
-    /*
-    top: 18.5%;
-    left: 15.3%; */
+    width: 20%;
+    position: fixed;;
+    top: 30%;
+    left: 45%;
     padding: 10px;
     overflow: hidden;
 
@@ -40,6 +39,7 @@
     }
 
     .form-horizontal input[type=text],
+    .form-horizontal input[type=email],
     .form-horizontal input[type=password] {
         /* Size and position */
         width: 50%;
@@ -69,7 +69,9 @@
 
     .form-horizontal input[type=text]:hover,
     .form-horizontal input[type=password]:hover,
+    .form-horizontal input[type=email]:hover,
     .form-horizontal label:hover ~ input[type=text],
+    .form-horizontal label:hover ~ input[type=email],
     .form-horizontal label:hover ~ input[type=password] {
         background: #27292c;
     }
@@ -206,13 +208,7 @@
     }
 
 </style>
-@section('content')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<div class="panel panel-default">
-				<div class="panel-heading">Register</div>
-				<div class="panel-body">
+@include('includes.sidebar')
 				
 @if (count($errors) > 0)
     <div class="alert alert-danger">
@@ -224,51 +220,25 @@
         </ul>
     </div>
 @endif
-
-<form class="form-horizontal" role="form" method="POST" action="/auth/register">
-<input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-<div class="form-group">
-<label class="col-md-4 control-label">Username</label>
-<div class="col-md-6">
-<input type="text" class="form-control" name="username" value="{{ old('username') }}">
-</div>
-</div>
-
-<div class="form-group">
-<label class="col-md-4 control-label">E-Mail Address</label>
-<div class="col-md-6">
-<input type="email" class="form-control" name="email" value="{{ old('email') }}">
-</div>
-</div>
-
-<div class="form-group">
-<label class="col-md-4 control-label">Password</label>
-<div class="col-md-6">
-<input type="password" class="form-control" name="password">
-</div>
-</div>
-
-<div class="form-group">
-<label class="col-md-4 control-label">Confirm Password</label>
-<div class="col-md-6">
-<input type="password" class="form-control" name="password_confirmation">
-</div>
-</div>
-
-<div class="form-group">
-<div class="col-md-6 col-md-offset-4">
-<button type="submit" class="btn btn-primary">
-	Register
-</button>
-</div>
-
-</div>
+<form class="form-horizontal" role="form" method="POST" action="/admin/create" style="margin: 60px auto 30px;">
+<p class="clearfix">
+    <label for="username">Username</label>
+    <input type="text" name="username" id="username" placeholder="Username">
+</p>
+<p class="clearfix">
+    <label for="email">E-Mail Address</label>
+    <input type="text" name="email" id="email" placeholder="example@example.com">
+</p>
+<p class="clearfix">
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" placeholder="Password"> 
+</p>
+<p class="clearfix">
+    <label for="password">Confirm Password</label>
+    <input type="password" name="password_confirmation" id="password" placeholder="Password"> 
+</p>
+<p class="clearfix" style="width:100%;">
+    <input type="submit" name="submit" value="Sign in">
+</p>
+<input type="hidden" style="position: absolute; left: 15%;" name="_token" value="{{ csrf_token() }}">
 </form>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-@endsection

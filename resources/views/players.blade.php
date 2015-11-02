@@ -1,10 +1,6 @@
 <html>
     <head>
-        <title>FTG</title>
-        <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/bootstrap.css') }}" />
-        <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/bootstrap-theme.css') }}" />
-        <script type="text/javascript" src="{{ URL::asset('assets/js/jquery-2.1.4.min.js') }}"></script>
-        <script type="text/javascript" src="{{ URL::asset('assets/bootstrap/bootstrap.min.js') }}"></script>
+        @include('includes.head')
         <style>
         html, body {
                background-color: #252830;
@@ -54,7 +50,7 @@
             .uid {
                 float: left;
                 position: relative;
-                left: 42.5%;
+                left: 47.3%;
             }
             .user a {
                 text-decoration: none;
