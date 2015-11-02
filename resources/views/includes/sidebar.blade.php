@@ -1,4 +1,3 @@
-@extends('layouts.master')
 <head>
     <style>
         .sidebar {
@@ -49,8 +48,11 @@
     <div class="sidebar">
         <div class="links">
             <ul id="links">
-                <li class="active"><a href="#"><p>Home</p></a></li>
-                <li><a href="#"><p>Search</p></a></li>
+                <li><a href="/home"><p>Home</p></a></li>
+                <li><a href="/players"><p>Players</p></a></li>
+                @if (Auth::User()->rank == 5)
+                    <li><a href="/admin"><p>Admin</p></a></li>
+                @endif  
                 <li><a href="/settings"><p>Settings</p></a></li>
                 <li><a href="/logout"><p>Logout</p></a></li>
             </ul>

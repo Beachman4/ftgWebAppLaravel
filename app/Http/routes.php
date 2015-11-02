@@ -23,12 +23,16 @@ Route::get('/logout', array('uses'  => 'Auth\AuthController@getLogout'));
 
 Route::get('auth/register', array('uses'  => 'Auth\AuthController@getRegister'));
 Route::post('auth/register', array('uses'  => 'Auth\AuthController@postRegister'));
-Route::get('/home', function() {
-    return view('home/home');
+
+Route::group(['middleware'  =>  'App\Http\Middleware\AdminMiddleware'], function() {
+    Route::get('/admin', array('uses'  =>  'Admin\AdminController@home'));
 });
-
-Route::controllers([
-    'password'  =>  'Auth\PasswordController',
-]);
-
-Route::get('/settings', array('uses'    =>  'Profile\SettingsController@getdbinfo'));
+Route::group(['middleware'  =>  'auth'], function() {
+    Route::get('/home', array('uses'    =>  'Profile\BaseController@Home'));
+    Route::get('/settings', array('uses'    =>  'Profile\SettingsController@getdbinfo'));
+    Route::post('/settings', array('uses'   =>  'Profile\SettingsController@updateinfo'));
+    Route::get('/players', array('uses'  =>  'PlayersController@getPlayers'));
+    Route::get('/players/{id}', array('uses'    =>  'PlayersController@showplayer'));
+    Route::get('/players/{id}/edit', array('uses'    =>  'PlayersController@editplayer'));
+    Route::post('/players', array('uses'    =>  'PlayersController@postSearch'));
+});

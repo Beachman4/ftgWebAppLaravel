@@ -3,8 +3,8 @@
         <title>FTG</title>
         <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/bootstrap.css') }}" />
         <link rel="stylesheet" href="{{ URL::asset('assets/bootstrap/bootstrap-theme.css') }}" />
-        <script type="text/javascript" href="{{ URL::asset('assets/js/jquery-2.1.4.min.js') }}"></script>
-        <script type="text/javascript" href="{{ URL::asset('assets/bootstrap/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::asset('assets/js/jquery-2.1.4.min.js') }}"></script>
+        <script type="text/javascript" src="{{ URL::asset('assets/bootstrap/bootstrap.min.js') }}"></script>
         
         <style>
             html, body {
@@ -26,7 +26,6 @@
     <body>
         @include('includes.sidebar')
         <div class="mainbody">
-        Rank: {{-- $rank --}}
         </div>
     </body>
 </html>
